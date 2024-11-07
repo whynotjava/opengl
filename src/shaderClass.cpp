@@ -1,6 +1,8 @@
-#include<headerFiles/shaderClass.h>
+#include"headerFiles/shaderClass.h"
 
-std::string get_file_contents(const char* filename){
+// Reads a text file and outputs a string with everything in the text file
+std::string get_file_contents(const char* filename)
+{
 	std::ifstream in(filename, std::ios::binary);
 	if (in)
 	{
@@ -16,13 +18,11 @@ std::string get_file_contents(const char* filename){
 }
 
 // Constructor that build the Shader Program from 2 different shaders
-Shader::Shader(const char* vertexFile, const char* fragmentFile)
-{
-	// std::cout<<"debug shader"<<std::endl;
+Shader::Shader(const char* vertexFile, const char* fragmentFile){
 	// Read vertexFile and fragmentFile and store the strings
 	std::string vertexCode = get_file_contents(vertexFile);
 	std::string fragmentCode = get_file_contents(fragmentFile);
-	// std::cout<<"debug shader2"<<std::endl;
+
 	// Convert the shader source strings into character arrays
 	const char* vertexSource = vertexCode.c_str();
 	const char* fragmentSource = fragmentCode.c_str();
@@ -33,7 +33,7 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 	glShaderSource(vertexShader, 1, &vertexSource, NULL);
 	// Compile the Vertex Shader into machine code
 	glCompileShader(vertexShader);
-// std::cout<<"debug shader"<<std::endl;
+
 	// Create Fragment Shader Object and get its reference
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	// Attach Fragment Shader source to the Fragment Shader Object
@@ -52,7 +52,7 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 	// Delete the now useless Vertex and Fragment Shader objects
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
-	// std::cout<<"debug shader2"<<std::endl;
+
 }
 
 // Activates the Shader Program
