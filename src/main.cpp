@@ -101,7 +101,7 @@ int main()
 
 	// textures!!!!!!
 	std::string texPath = "../res/tex/";
-	Texture brick((texPath + "openGL1.png").c_str(), GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
+	Texture brick((texPath + "brick.png").c_str(), GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 	brick.texUnit(shaderProgram, "tex0", 0);
 
 	
@@ -133,7 +133,7 @@ int main()
 		glUniformMatrix4fv(viewLoc, 1 ,GL_FALSE, glm::value_ptr(view));
 
 		int projLoc =  glGetUniformLocation(shaderProgram.ID, "proj");
-		glUniformMatrix4fv(projLoc, 1 ,GL_FALSE, glm::value_ptr(model));
+		glUniformMatrix4fv(projLoc, 1 ,GL_FALSE, glm::value_ptr(proj));
 
 
 
