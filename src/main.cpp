@@ -100,7 +100,7 @@ int main()
 
 	// textures!!!!!!
 	std::string texPath = "../res/tex/";
-	Texture brick((texPath + "pop_cat.png").c_str(), GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+	Texture brick((texPath + "brick.png").c_str(), GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 	brick.texUnit(shaderProgram, "tex0", 0);
 
 	

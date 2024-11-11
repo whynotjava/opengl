@@ -23,7 +23,7 @@ Texture::Texture(const char* image, GLenum texType, GLenum slot, GLenum format, 
 	glBindTexture(texType, ID);
 	glActiveTexture(slot);
 	
-	std::cout<<"gen and activated texture"<<std::endl;
+	// std::cout<<"gen and activated texture"<<std::endl;
 
 	glTexParameteri(texType, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(texType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -31,25 +31,25 @@ Texture::Texture(const char* image, GLenum texType, GLenum slot, GLenum format, 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-	std::cout<<"made changes to tex settings"<<std::endl;
+	// std::cout<<"made changes to tex settings"<<std::endl;
 
 	glTexImage2D(texType, 0, GL_RGBA, widthImg, heightImg, 0, format, pixlelType, bytes);
 
-	std::cout<<"set up 2d tex"<<std::endl;
+	// std::cout<<"set up 2d tex"<<std::endl;
 
 	glGenerateMipmap(texType);
 
-	std::cout<<"gen minpap"<<std::endl;
+	// std::cout<<"gen minpap"<<std::endl;
 
 	stbi_image_free(bytes);
 
 	glBindTexture(texType, 0);
 
-	std::cout<<"unboud and freed tex"<<std::endl;
+	// std::cout<<"unboud and freed tex"<<std::endl;
 
     glEnable(texType);
 
-    std::cout<<"texture loaded succseully!"<<std::endl;
+    // std::cout<<"texture loaded succseully!"<<std::endl;
 }
 
 void Texture::texUnit(Shader& shader, const char* uniform, GLuint unit){
